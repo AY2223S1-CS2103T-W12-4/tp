@@ -16,7 +16,7 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final Remark DEFAULT_REMARK = new Remark("");
+    public static final String DEFAULT_REMARK = "She likes bread";
 
     private Name name;
     private Phone phone;
@@ -34,7 +34,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
-        remark = DEFAULT_REMARK;
+        remark = new Remark(DEFAULT_REMARK);
     }
 
     /**
