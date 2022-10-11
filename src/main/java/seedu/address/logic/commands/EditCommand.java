@@ -94,15 +94,15 @@ public class EditCommand extends Command {
         assert studentToEdit != null;
 
         Name updatedName = editStudentDescriptor.getName().orElse(studentToEdit.getName());
-        Optional<Phone> updatedPhone = editStudentDescriptor.getPhone() != null
-                                            ? editStudentDescriptor.getPhone()
-                                            : studentToEdit.getPhone();
-        Optional<Email> updatedEmail = editStudentDescriptor.getEmail() != null
-                                            ? editStudentDescriptor.getEmail()
-                                            : studentToEdit.getEmail();
-        Optional<Address> updatedAddress = editStudentDescriptor.getAddress() != null
-                                            ? editStudentDescriptor.getAddress()
-                                            : studentToEdit.getAddress();
+        Phone updatedPhone = editStudentDescriptor.getPhone().isPresent()
+                    ? editStudentDescriptor.getPhone().get()
+                    : studentToEdit.getPhone();
+        Email updatedEmail = editStudentDescriptor.getEmail().isPresent()
+                    ? editStudentDescriptor.getEmail().get()
+                    : studentToEdit.getEmail();
+        Address updatedAddress = editStudentDescriptor.getAddress().isPresent()
+                    ? editStudentDescriptor.getAddress().get()
+                    : studentToEdit.getAddress();
         Set<Tag> updatedTags = editStudentDescriptor.getTags().orElse(studentToEdit.getTags());
 
         return new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
@@ -132,9 +132,9 @@ public class EditCommand extends Command {
      */
     public static class EditStudentDescriptor {
         private Name name;
-        private Optional<Phone> phone;
-        private Optional<Email> email;
-        private Optional<Address> address;
+        private Phone phone;
+        private Email email;
+        private Address address;
         private Set<Tag> tags;
 
         public EditStudentDescriptor() {}
@@ -166,28 +166,28 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
 
-        public void setPhone(Optional<Phone> phone) {
+        public void setPhone(Phone phone) {
             this.phone = phone;
         }
 
         public Optional<Phone> getPhone() {
-            return this.phone;
+            return Optional.ofNullable(phone);
         }
 
-        public void setEmail(Optional<Email> email) {
+        public void setEmail(Email email) {
             this.email = email;
         }
 
         public Optional<Email> getEmail() {
-            return this.email;
+            return Optional.ofNullable(email);
         }
 
-        public void setAddress(Optional<Address> address) {
+        public void setAddress(Address address) {
             this.address = address;
         }
 
         public Optional<Address> getAddress() {
-            return this.address;
+            return Optional.ofNullable(address);
         }
 
         /**

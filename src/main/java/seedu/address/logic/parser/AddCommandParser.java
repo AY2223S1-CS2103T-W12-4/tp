@@ -33,9 +33,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Optional<Phone> phone = Optional.ofNullable(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)));
-        Optional<Email> email = Optional.ofNullable(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL)));
-        Optional<Address> address = Optional.ofNullable(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS)));
+        Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE));
+        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL));
+        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Student student = new Student(name, phone, email, address, tagList);

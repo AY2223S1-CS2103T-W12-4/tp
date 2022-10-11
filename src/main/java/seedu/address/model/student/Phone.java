@@ -1,5 +1,6 @@
 package seedu.address.model.student;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
@@ -20,6 +21,7 @@ public class Phone {
      * @param phone A valid phone number.
      */
     public Phone(String phone) {
+        requireNonNull(phone);
         if (!phone.equals("NA")) {
             checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
         }

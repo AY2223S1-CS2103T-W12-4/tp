@@ -18,17 +18,17 @@ public class Student {
 
     // Identity fields
     private final Name name;
-    private final Optional<Phone> phone;
-    private final Optional<Email> email;
+    private final Phone phone;
+    private final Email email;
 
     // Data fields
-    private final Optional<Address> address;
+    private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Student(Name name, Optional<Phone> phone, Optional<Email> email, Optional<Address> address, Set<Tag> tags) {
+    public Student(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name);
         this.name = name;
         this.phone = phone;
@@ -41,15 +41,15 @@ public class Student {
         return name;
     }
 
-    public Optional<Phone> getPhone() {
+    public Phone getPhone() {
         return phone;
     }
 
-    public Optional<Email> getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public Optional<Address> getAddress() {
+    public Address getAddress() {
         return address;
     }
 
@@ -107,11 +107,11 @@ public class Student {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
                 .append("; Phone: ")
-                .append(getPhone().get())
+                .append(getPhone())
                 .append("; Email: ")
-                .append(getEmail().get())
+                .append(getEmail())
                 .append("; Address: ")
-                .append(getAddress().get());
+                .append(getAddress());
 
         Set<Tag> tags = getTags();
         if (!tags.isEmpty()) {
